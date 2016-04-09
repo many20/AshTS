@@ -1,38 +1,41 @@
 
-import MSystem = module("core/System");
+import MSystem = require("core/System");
 
-import MMovement = module("game/nodes/Movement");
+import MMovement = require("game/nodes/Movement");
+import MNodeList = require("core/NodeList");
+import MEngine = require("core/Engine");
+import MGamestate = require("components/Gamestate");
 
 export class MovementSystem extends MSystem.ash.core.System {
 
-    constructor(gameState) {
+    constructor(gameState: MGamestate.GameState) {
         super();
         this.initialise(gameState);
     }
 
-    public gameState = null;
-    public nodeList = null;
+    public gameState: MGamestate.GameState = null;
+    public nodeList: MNodeList.ash.core.NodeList<MMovement.Movement> = null;
 
-    public initialise = function (gameState) {
+    public initialise(gameState: MGamestate.GameState) {
         this.gameState = gameState;
         return this;
     }
 
-    public addToEngine = function (engine) {
-        this.nodeList = engine.getNodeList(MMovement.Movement);
+    public addToEngine(engine: MEngine.ash.core.Engine) {
+        this.nodeList = engine.getNodeList<MMovement.Movement>(MMovement.Movement);
     }
 
-    public removeFromEngine = function (engine) {
+    public removeFromEngine(engine: MEngine.ash.core.Engine) {
         this.nodeList = null;
     }
 
-    public update = function (time) {
+    public update(time: number) {
         for (var node = this.nodeList.head; node; node = node.next) {
             this.updateNode(node, time);
         }
     }
 
-    public updateNode = function (node, time) {
+    public updateNode(node: MMovement.Movement, time: number) {
         var position = node.position;
         var motion = node.motion;
 

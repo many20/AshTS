@@ -1,13 +1,12 @@
-import MSignal = module("tools/Signal");
+import MSignal = require("tools/Signal");
 //export class Signal extends MSignal.Signal {}
 
-import MDictionary = module("tools/Dictionary");
-//export class Dictionary extends MDictionary.ash.tools.Dictionary {}
+import MDictionary = require("tools/Dictionary");
+import MComponents = require("core/Components"); //export class Dictionary extends MDictionary.ash.tools.Dictionary {}
 
-export module ash.core
-{
+export module ash.core {
 
-	/**
+    /**
 	 * An entity is composed from components. As such, it is essentially a collection object for components. 
 	 * Sometimes, the entities in a game will mirror the actual characters and objects in the game, but this 
 	 * is not necessary.
@@ -25,34 +24,32 @@ export module ash.core
 	 * <p>All entities that have a position in the game world, will have an instance of the
 	 * position component. Systems operate on entities based on the components they have.</p>
 	 */
-	export class Entity
-	{
+    export class Entity {
 
-		/**
+        /**
 		 * Optional, give the entity a name. This can help with debugging and with serialising the entity.
 		 */
-		public name: string;
-		/**
+        public name: string;
+        /**
 		 * This signal is dispatched when a component is added to the entity.
 		 */
-		public componentAdded: MSignal.Signal;
-		/**
+        public componentAdded: MSignal.Signal;
+        /**
 		 * This signal is dispatched when a component is removed from the entity.
 		 */
-		public componentRemoved: MSignal.Signal;
-		
-		public previous : Entity;
-		public next : Entity;
-		private _components: MDictionary.ash.tools.Dictionary;
+        public componentRemoved: MSignal.Signal;
 
-		constructor()
-		{
-		    this.componentAdded = new MSignal.Signal();
-		    this.componentRemoved = new MSignal.Signal();
-			this._components = new MDictionary.ash.tools.Dictionary();
-		}
+        public previous: Entity;
+        public next: Entity;
+        private _components: MDictionary.ash.tools.Dictionary;
 
-		/**
+        constructor() {
+            this.componentAdded = new MSignal.Signal();
+            this.componentRemoved = new MSignal.Signal();
+            this._components = new MDictionary.ash.tools.Dictionary();
+        }
+
+        /**
 		 * Add a component to the entity.
 		 * 
 		 * @param component The component object to add.
@@ -67,76 +64,69 @@ export module ash.core
 		 *     .add( new Position( 100, 200 )
 		 *     .add( new Display( new PlayerClip() );</code>
 		 */
-		public add( component: any, componentClass  = null ): Entity
-		{
-			if ( !componentClass )
-			{
-			    componentClass = component.prototype;
-			}
-			if ( this._components.has(componentClass))
-			{
-			    this.remove(componentClass);
-			}
-			this._components.add(componentClass, component);
-			this.componentAdded.dispatch( this, componentClass );
-			return this;
-		}
+        public add(component: MComponents.ash.core.IComponents, componentClass: MComponents.ash.core.ComponentsClass = null): Entity {
+            if (!componentClass) {
+                //TODO: ?
+                componentClass = component.constructor;
+            }
+            if (this._components.has(componentClass)) {
+                this.remove(componentClass);
+            }
+            this._components.add(componentClass, component);
+            this.componentAdded.dispatch(this, componentClass);
+            return this;
+        }
 
-		/**
+        /**
 		 * Remove a component from the entity.
 		 * 
 		 * @param componentClass The class of the component to be removed.
 		 * @return the component, or null if the component doesn't exist in the entity
 		 */
-		public remove( componentClass  ): any
-		{
-		    var component: any = this._components.getValue(componentClass);
-			if (component)
-			{
-			    this._components.remove[ componentClass ];
-				this.componentRemoved.dispatch( this, componentClass );
-				return component;
-			}
-			return null;
-		}
+        public remove(componentClass: MComponents.ash.core.ComponentsClass): MComponents.ash.core.IComponents {
+            var component: any = this._components.getValue(componentClass);
+            if (component) {
+                this._components.remove(componentClass);
+                this.componentRemoved.dispatch(this, componentClass);
+                return component;
+            }
+            return null;
+        }
 
-		/**
+        /**
 		 * Get a component from the entity.
 		 * 
 		 * @param componentClass The class of the component requested.
 		 * @return The component, or null if none was found.
 		 */
-		public get (componentClass: any  ) : any
-		{
-			return this._components.getValue(componentClass.prototype);
-		}
-		
-		/**
+        public get(componentClass: MComponents.ash.core.ComponentsClass): MComponents.ash.core.IComponents {
+            return this._components.getValue(componentClass);
+        }
+
+        /**
 		 * Get all components from the entity.
 		 * 
 		 * @return An array containing all the components that are on the entity.
 		 */
-		public getAll(): any[]
-		{
-		    var componentArray = [];
+        public getAll(): MComponents.ash.core.IComponents[] {
+            var componentArray = [];
 
-		    this._components.forEach(
-                function (componentClass, component) {
+            this._components.forEach(
+                (componentClass, component) => {
                     componentArray.push(component);
                 }
             );
-			return componentArray;
-		}
+            return componentArray;
+        }
 
-		/**
+        /**
 		 * Does the entity have a component of a particular type.
 		 * 
 		 * @param componentClass The class of the component sought.
 		 * @return true if the entity has a component of the type, false if not.
 		 */
-		public has(componentClass: any) :bool
-		{
-			return this._components.has(componentClass) != null;
-		}
-	}
+        public has(componentClass: MComponents.ash.core.ComponentsClass): boolean {
+            return this._components.has(componentClass) !== false;
+        }
+    }
 }

@@ -1,15 +1,16 @@
-define(["require", "exports"], function(require, exports) {
-    
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+    // Class
     var Keypoll = (function () {
         function Keypoll() {
-            this.keys = {
-            };
+            this.keys = {};
             this.global = window;
             this.up = "38";
             this.down = "40";
             this.left = "37";
             this.right = "39";
             this.fire = "32";
+            this.addListeners();
         }
         Keypoll.prototype.onKeyDown = function (event) {
             event.preventDefault();
@@ -17,21 +18,21 @@ define(["require", "exports"], function(require, exports) {
         };
         Keypoll.prototype.onKeyUp = function (event) {
             event.preventDefault();
-            if(this.keys[event.keyCode]) {
+            if (this.keys[event.keyCode]) {
                 this.keys[event.keyCode] = null;
                 delete this.keys[event.keyCode];
             }
         };
         Keypoll.prototype.addListeners = function () {
-            this.global.addEventListener("keydown", this.onKeyDown);
-            this.global.addEventListener("keyup", this.onKeyUp);
+            this.global.addEventListener("keydown", this.onKeyDown.bind(this));
+            this.global.addEventListener("keyup", this.onKeyUp.bind(this));
         };
         Keypoll.prototype.getKeys = function () {
             return this.keys;
         };
         Keypoll.prototype.isDown = function (testKey) {
-            for(var keyCode in this.keys) {
-                if(keyCode == testKey) {
+            for (var keyCode in this.keys) {
+                if (keyCode == testKey) {
                     return true;
                 }
             }
@@ -40,10 +41,11 @@ define(["require", "exports"], function(require, exports) {
         Keypoll.prototype.addKeyboardCodeEnum = function () {
         };
         return Keypoll;
-    })();
-    exports.Keypoll = Keypoll;    
+    }());
+    exports.Keypoll = Keypoll;
     var Keyboard = (function () {
-        function Keyboard() { }
+        function Keyboard() {
+        }
         Keyboard.keyboard = {
             BACKSPACE: 8,
             TAB: 9,
@@ -120,7 +122,6 @@ define(["require", "exports"], function(require, exports) {
             NUMPAD_DIVIDE: 111
         };
         return Keyboard;
-    })();
-    exports.Keyboard = Keyboard;    
-})
-//@ sourceMappingURL=KeyPoll.js.map
+    }());
+    exports.Keyboard = Keyboard;
+});

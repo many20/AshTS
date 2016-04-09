@@ -1,10 +1,10 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports"], function (require, exports) {
+    "use strict";
     var Bullet = (function () {
         function Bullet(lifeTime) {
-            this.lifeRemaining = lifeTime;
+            this.lifeTime = lifeTime;
         }
         return Bullet;
-    })();
-    exports.Bullet = Bullet;    
-})
-//@ sourceMappingURL=Bullet.js.map
+    }());
+    exports.Bullet = Bullet;
+});

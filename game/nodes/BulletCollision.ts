@@ -1,29 +1,28 @@
-import MNode = module("core/Node");
+import MNode = require("core/Node");
 
-import MBullet = module("game/components/Bullet");
-import MPosition = module("game/components/Position");
+import MBullet = require("game/components/Bullet");
+import MPosition = require("game/components/Position");
 
-export class BulletCollision extends MNode.ash.core.Node {
+export class BulletCollision extends MNode.ash.core.Node<BulletCollision> {
 
-    public bullet = null;
-    public position: any;
+    public bullet: MBullet.Bullet = null;
+    public position: MPosition.Position;
 
-    public types: any;
+    public static types = {
+        bullet: MBullet.Bullet,
+        position: MPosition.Position
+    }
 
     constructor() {
         super();
-        this.types = {
-            bullet: MBullet.Bullet,
-            position: MPosition.Position
-        }
     }
 
 }
 
 //i hope there is a better way :)
-BulletCollision.prototype.bullet = null;
-BulletCollision.prototype.position = null;
-BulletCollision.prototype.types = {
-    bullet: MBullet.Bullet,
-    position: MPosition.Position
-}
+//BulletCollision.prototype.bullet = null;
+//BulletCollision.prototype.position = null;
+//BulletCollision.prototype.types = {
+//    bullet: MBullet.Bullet,
+//    position: MPosition.Position
+//}

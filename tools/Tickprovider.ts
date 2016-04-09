@@ -1,7 +1,8 @@
-import MIWindow = module("tools/IWindow");
+
+import MIWindow = require("tools/IWindow");
 declare var window: MIWindow.IWindow;
 
-import MSignal = module("tools/Signal");
+import MSignal = require("tools/Signal");
 
 // Module
 export class TickProvider {
@@ -15,28 +16,27 @@ export class TickProvider {
 
         start() {
             this.previousTime = Date.now();
-            this.request = window.requestAnimFrame(this.tick.bind(this));
-        };
+            this.request = window.requestAnimationFrame(this.tick.bind(this));
+        }
 
         stop() {
-            window.cancelRequestAnimFrame(this.request);
-        };
+            window.cancelAnimationFrame(this.request);
+        }
 
-        add = function (listener, context) {
+        add(listener: Function, context: any) {
             this.ticked.add(listener, context);
-        };
+        }
 
-        remove(listener, context) {
+        remove(listener: Function, context: any) {
             this.ticked.remove(listener, context);
-        };
+        }
 
-        tick(timestamp) {
-            timestamp = timestamp || Date.now();
+        tick(timestamp: number = Date.now()) {
             var tmp = this.previousTime;
             this.previousTime = timestamp;
             var delta = (timestamp - tmp) * 0.001;
             this.ticked.dispatch(delta);
             requestAnimationFrame(this.tick.bind(this));
-        };
+        }
 
 }

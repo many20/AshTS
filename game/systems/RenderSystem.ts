@@ -1,26 +1,34 @@
-import MSystem = module("core/System");
-import MEngine = module("core/Engine");
+import MSystem = require("core/System");
+import MEngine = require("core/Engine");
+import MNode = require("core/Node");
 
-import MRender = module("game/nodes/Render");
+import MRender = require("game/nodes/Render");
+import MNodeList = require("core/NodeList");
+
+import MPosition = require("game/components/Position");
+import MDisplay = require("game/components/Display");
+import View = require("core/IView");
+
 
 export class RenderSystem extends MSystem.ash.core.System {
-    constructor(graphicsContext) {
+
+    constructor(graphicsContext: CanvasRenderingContext2D) {
         super();
         this.initialise(graphicsContext);
     }
 
-    public context = null;
-    public nodes = null;
+    public context: CanvasRenderingContext2D = null;
+    public nodes: MNodeList.ash.core.NodeList<MRender.Render> = null;
 
     private _count = 0;
 
-    public initialise(graphicsContext) {
+    public initialise(graphicsContext: CanvasRenderingContext2D) {
         this.context = graphicsContext;
         return this;
     }
 
     public addToEngine(engine: MEngine.ash.core.Engine) {
-        this.nodes = engine.getNodeList(MRender.Render);
+        this.nodes = engine.getNodeList<MRender.Render>(MRender.Render);
         for (var node = this.nodes.head; node; node = node.next) {
             this.addToDisplay(node);
         }
@@ -28,31 +36,30 @@ export class RenderSystem extends MSystem.ash.core.System {
         this.nodes.nodeRemoved.add(this.removeFromDisplay, this);
     }
 
-    public removeFromEngine(engine) {
+    public removeFromEngine(engine: MEngine.ash.core.Engine) {
         this.nodes = null;
     }
 
-    public addToDisplay(node) {
+    public addToDisplay(node: MRender.Render) {
         // Intentionally left blank
     }
 
-    public removeFromDisplay(node) {
+    public removeFromDisplay(node: MRender.Render) {
         // Intentionally left blank
     }
 
-    public update(time) {
+    public update(time: number) {
 
-        var node;
-        var position;
-        var display;
-        var graphic;
+        var position: MPosition.Position;
+        var display: MDisplay.Display;
+        var graphic: View.ash.core.IView;
 
         this.context.save();
         this.context.translate(0, 0);
         this.context.rotate(0);
         this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
 
-        for (node = this.nodes.head; node; node = node.next) {
+        for (var node = this.nodes.head; node; node = node.next) {
 
             display = node.display;
             graphic = display.graphic;

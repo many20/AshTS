@@ -1,8 +1,6 @@
-export class Bullet {
+import Components = require("core/Components");
 
-    public lifeRemaining: number;
-
-    constructor(lifeTime: number) {
-        this.lifeRemaining = lifeTime;
+export class Bullet implements Components.ash.core.IComponents {
+    constructor(public lifeTime: number) {
     }
 }

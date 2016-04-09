@@ -1,3 +1,3 @@
-define(["require", "exports"], function(require, exports) {
-})
-//@ sourceMappingURL=IWindow.js.map
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+});

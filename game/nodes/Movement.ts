@@ -1,29 +1,28 @@
-import MNode = module("core/Node");
+import MNode = require("core/Node");
 
-import MPosition = module("game/components/Position");
-import MMotion = module("game/components/Motion");
+import MPosition = require("game/components/Position");
+import MMotion = require("game/components/Motion");
 
-export class Movement extends MNode.ash.core.Node {
+export class Movement extends MNode.ash.core.Node<Movement> {
 
-    public control = null;
-    public position = null;
+    public position: MPosition.Position = null;
+    public motion: MMotion.Motion = null;
 
-    public types: any;
+    public static types = {
+        position: MPosition.Position,
+        motion: MMotion.Motion
+    }
 
     constructor() {
         super();
-        this.types = {
-            position: MPosition.Position,
-            motion: MMotion.Motion
-        }
     }
 
 }
 
 //i hope there is a better way :)
-Movement.prototype.control = null;
-Movement.prototype.position = null;
-Movement.prototype.types = {
-    position: MPosition.Position,
-    motion: MMotion.Motion
-}
+//Movement.prototype.motion = null;
+//Movement.prototype.position = null;
+//Movement.prototype.types = {
+//    position: MPosition.Position,
+//    motion: MMotion.Motion
+//}

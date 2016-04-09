@@ -1,1 +1,1 @@
-{"version":3,"file":"Asteroid.js","sources":["Asteroid.ts"],"names":["Asteroid","Asteroid.constructor"],"mappings":"AAAA;IAAA;QACIA,SADSA,QAAQA;QAEjBC,CAACA;QACLD;AAACA,IAADA,CAACA,IAAA;IAHD,4BAGC,IAAA;;AAAA"}
+{"version":3,"file":"Asteroid.js","sourceRoot":"","sources":["Asteroid.ts"],"names":[],"mappings":";;IAEA;QACI;QACA,CAAC;QACL,eAAC;IAAD,CAAC,AAHD,IAGC;IAHY,gBAAQ,WAGpB,CAAA"}

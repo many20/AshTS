@@ -1,0 +1,36 @@
+{
+    "version": "v4",
+    "repo": "borisyankov/DefinitelyTyped",
+    "ref": "master",
+    "path": "./Scripts/typings",
+    "bundle": "./Scripts/typings/tsd.d.ts",
+    "installed": {
+        //"jquery/jquery.d.ts": {
+        //  "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        //},
+        "requirejs/require.d.ts": {
+            "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        },
+        "dat-gui/dat-gui.d.ts": {
+            "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        },
+        //"underscore/underscore.d.ts": {
+        //  "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        //},
+        //"createjs-lib/createjs-lib.d.ts": {
+        //  "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        //},
+        //"tweenjs/tweenjs.d.ts": {
+        //  "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        //},
+        "js-signals/js-signals.d.ts": {
+            "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        },
+        //"easeljs/easeljs.d.ts": {
+        //  "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        //},
+        "requirejs-domready/domready.d.ts": {
+            "commit": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+        }
+    }
+}

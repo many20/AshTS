@@ -1,29 +1,29 @@
-import MNode = module("core/Node");
+import MNode = require("core/Node");
+import MComponents = require("core/Components");
 
-import MAsteroid = module("game/components/Asteroid");
-import MPosition = module("game/components/Position");
+import MAsteroid = require("game/components/Asteroid");
+import MPosition = require("game/components/Position");
 
-export class AsteroidCollision extends MNode.ash.core.Node {
+export class AsteroidCollision extends MNode.ash.core.Node<AsteroidCollision> {
 
     public asteroid = null;
     public position = null;
 
-    public types: any;
+    public static types = {
+        asteroid: MAsteroid.Asteroid,
+        position: MPosition.Position
+    };
 
     constructor() {
         super();
-        this.types = {
-            asteroid: MAsteroid.Asteroid,
-            position: MPosition.Position
-        }
     }
 
 }
 
 //i hope there is a better way :)
-AsteroidCollision.prototype.asteroid = null;
-AsteroidCollision.prototype.position = null;
-AsteroidCollision.prototype.types = {
-    asteroid: MAsteroid.Asteroid,
-    position: MPosition.Position
-}
+//AsteroidCollision.prototype.asteroid = null;
+//AsteroidCollision.prototype.position = null;
+//AsteroidCollision.prototype.types = {
+//    asteroid: MAsteroid.Asteroid,
+//    position: MPosition.Position
+//}

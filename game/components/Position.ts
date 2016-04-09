@@ -1,14 +1,11 @@
-import MPoint = module("tools/Point");
+import MPoint = require("tools/Point");
+import Components = require("core/Components");
 
-export class Position {
+export class Position implements  Components.ash.core.IComponents {
 
     public position: MPoint.Point = null;
-    public rotation = null;
-    public collisionRadius: number = null;
 
-    constructor(x: number, y: number, rotation, collisionRadius: number) {
+    constructor(x: number, y: number, public rotation: number, public collisionRadius: number) {
         this.position = new MPoint.Point(x, y);
-        this.rotation = rotation;
-        this.collisionRadius = collisionRadius;
     }
 }

@@ -4,8 +4,34 @@
 <head>
     <meta charset="utf-8" />
     <title>TypeScript AshTS</title>
-    <script type="text/javascript" data-main="app"  src="Scripts/libs/require.js"></script>
+    <script type="text/javascript" data-main="app" src="Scripts/libs/require.js"></script>
     <script>
+        require.config({
+
+        //    baseUrl: 'assets/scripts/',
+
+            paths: {
+        //        //main libraries
+                jquery: './Scripts/libs/jquery',
+
+        //        //shortcut paths
+        //        templates: '../templates',
+        //        data: '../data',
+
+        //        //require plugins
+        //        text: '../vendor/require/text',
+        //        tpl: '../vendor/require/tpl',
+        //        json: '../vendor/require/json',
+        //        hbs: '../vendor/require-handlebars-plugin/hbs'
+            },
+
+            shim: {
+                jquery: {
+                    exports: '$'
+                }
+            }
+        });
+
         require(['Scripts/libs/domReady!', 'app'], function (doc) {
             window.CurrentApp = require("app");
         });

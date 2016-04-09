@@ -1,34 +1,29 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "core/Node", "game/components/Position", "game/components/Display"], function(require, exports, __MNode__, __MPosition__, __MDisplay__) {
-    var MNode = __MNode__;
-
-    var MPosition = __MPosition__;
-
-    var MDisplay = __MDisplay__;
-
+define(["require", "exports", "core/Node", "game/components/Position", "game/components/Display"], function (require, exports, MNode, MPosition, MDisplay) {
+    "use strict";
     var Render = (function (_super) {
         __extends(Render, _super);
         function Render() {
-                _super.call(this);
+            _super.call(this);
             this.position = null;
             this.display = null;
-            this.types = {
-                position: MPosition.Position,
-                motion: MDisplay.Display
-            };
         }
+        Render.types = {
+            position: MPosition.Position,
+            motion: MDisplay.Display
+        };
         return Render;
-    })(MNode.ash.core.Node);
-    exports.Render = Render;    
-    Render.prototype.position = null;
-    Render.prototype.display = null;
-    Render.prototype.types = {
-        position: MPosition.Position,
-        motion: MDisplay.Display
-    };
-})
-//@ sourceMappingURL=Render.js.map
+    }(MNode.ash.core.Node));
+    exports.Render = Render;
+});
+//i hope there is a better way :)
+//Render.prototype.position = null;
+//Render.prototype.display = null;
+//Render.prototype.types = {
+//    position: MPosition.Position,
+//    motion: MDisplay.Display
+//} 

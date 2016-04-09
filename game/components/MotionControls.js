@@ -1,12 +1,7 @@
-define(["require", "exports"], function(require, exports) {
-    
+define(["require", "exports"], function (require, exports) {
+    "use strict";
     var MotionControls = (function () {
         function MotionControls(left, right, accelerate, accelerationRate, rotationRate) {
-            this.left = null;
-            this.right = null;
-            this.accelerate = null;
-            this.accelerationRate = null;
-            this.rotationRate = null;
             this.left = left;
             this.right = right;
             this.accelerate = accelerate;
@@ -14,7 +9,6 @@ define(["require", "exports"], function(require, exports) {
             this.rotationRate = rotationRate;
         }
         return MotionControls;
-    })();
-    exports.MotionControls = MotionControls;    
-})
-//@ sourceMappingURL=MotionControls.js.map
+    }());
+    exports.MotionControls = MotionControls;
+});

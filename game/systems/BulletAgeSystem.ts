@@ -1,7 +1,10 @@
 
-import MSystem = module("core/System");
+import MSystem = require("core/System");
+import MEntityCreator = require("game/EntityCreator");
 
-import MBulletAge = module("game/nodes/BulletAge");
+import MBulletAge = require("game/nodes/BulletAge");
+import MEngine = require("core/Engine");
+import MNodeList = require("core/NodeList");
 
 export class BulletAgeSystem extends MSystem.ash.core.System {
 
@@ -10,32 +13,32 @@ export class BulletAgeSystem extends MSystem.ash.core.System {
         this.initialise(creator);
     }
 
-    creator = null;
-    nodeList = null;
+    creator: MEntityCreator.EntityCreator = null;
+    nodeList: MNodeList.ash.core.NodeList<MBulletAge.BulletAge> = null;
 
-    initialise(creator) {
+    initialise(creator: MEntityCreator.EntityCreator) {
         this.creator = creator;
         return this;
     }
 
-    addToEngine(engine) {
-        this.nodeList = engine.getNodeList(MBulletAge.BulletAge);
+    addToEngine(engine: MEngine.ash.core.Engine) {
+        this.nodeList = engine.getNodeList<MBulletAge.BulletAge>(MBulletAge.BulletAge);
     }
 
-    removeFromEngine(engine) {
+    removeFromEngine(engine: MEngine.ash.core.Engine) {
         this.nodeList = null;
     }
 
-    update(time) {
+    update(time: number) {
         for (var node = this.nodeList.head; node; node = node.next) {
             this.updateNode(node, time);
         }
     }
 
-    updateNode(node, time) {
+    updateNode(node: MBulletAge.BulletAge, time: number) {
         var bullet = node.bullet;
-        bullet.lifeRemaining -= time;
-        if (bullet.lifeRemaining <= 0) {
+        bullet.lifeTime -= time;
+        if (bullet.lifeTime <= 0) {
             this.creator.destroyEntity(node.entity);
         }
     }

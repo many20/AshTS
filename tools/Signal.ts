@@ -1,5 +1,5 @@
 /// <reference path="SignalBinding.ts" />
-import MSignalBinding = module("tools/SignalBinding");
+import MSignalBinding = require("tools/SignalBinding");
 
 /**
 *	@desc       A TypeScript conversion of JS Signals by Miller Medeiros
@@ -52,27 +52,27 @@ export class Signal {
     * already dispatched before.
     * @type boolean
     */
-    public memorize: bool = false;
+    public memorize: boolean = false;
 
     /**
     * @type boolean
     * @private
     */
-    private _shouldPropagate: bool = true;
+    private _shouldPropagate: boolean = true;
 
     /**
     * If Signal is active and should broadcast events.
     * <p><strong>IMPORTANT:</strong> Setting this property during a dispatch will only affect the next dispatch, if you want to stop the propagation of a signal use `halt()` instead.</p>
     * @type boolean
     */
-    public active: bool = true;
+    public active: boolean = true;
 
     /**
     * @method validateListener
     * @param {Any} listener
     * @param {Any} fnName
     */
-    public validateListener(listener, fnName) {
+    public validateListener(listener: any, fnName: any) {
 
         if (typeof listener !== 'function')
         {
@@ -89,7 +89,7 @@ export class Signal {
     * @return {MSignalBinding.SignalBinding}
     * @private
     */
-    private _registerListener(listener, isOnce: bool, listenerContext, priority: number): MSignalBinding.SignalBinding {
+    private _registerListener(listener: Function, isOnce: boolean, listenerContext: any, priority: number): MSignalBinding.SignalBinding {
 
         var prevIndex: number = this._indexOfListener(listener, listenerContext);
         var binding: MSignalBinding.SignalBinding;
@@ -142,7 +142,7 @@ export class Signal {
     * @return {number}
     * @private
     */
-    private _indexOfListener(listener, context): number {
+    private _indexOfListener(listener: Function, context: any): number {
 
         var n: number = this._bindings.length;
         var cur: MSignalBinding.SignalBinding;
@@ -167,7 +167,7 @@ export class Signal {
     * @param {Object} [context]
     * @return {boolean} if Signal has the specified listener.
     */
-    public has(listener, context?: any = null): bool {
+    public has(listener: Function, context: any = null): boolean {
 
         return this._indexOfListener(listener, context) !== -1;
 
@@ -180,7 +180,7 @@ export class Signal {
     * @param {Number} [priority] The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added. (default = 0)
     * @return {MSignalBinding.SignalBinding} An Object representing the binding between the Signal and listener.
     */
-    public add(listener, listenerContext?: any = null, priority?: number = 0): MSignalBinding.SignalBinding {
+    public add(listener: Function, listenerContext: any = null, priority: number = 0): MSignalBinding.SignalBinding {
 
         this.validateListener(listener, 'add');
 
@@ -195,7 +195,7 @@ export class Signal {
     * @param {Number} [priority] The priority level of the event listener. Listeners with higher priority will be executed before listeners with lower priority. Listeners with same priority level will be executed at the same order as they were added. (default = 0)
     * @return {MSignalBinding.SignalBinding} An Object representing the binding between the Signal and listener.
     */
-    public addOnce(listener, listenerContext?: any = null, priority?: number = 0): MSignalBinding.SignalBinding {
+    public addOnce(listener: Function, listenerContext: any = null, priority: number = 0): MSignalBinding.SignalBinding {
 
         this.validateListener(listener, 'addOnce');
 
@@ -209,7 +209,7 @@ export class Signal {
     * @param {Object} [context] Execution context (since you can add the same handler multiple times if executing in a different context).
     * @return {Function} Listener handler function.
     */
-    public remove(listener, context?: any = null) {
+    public remove(listener: Function, context: any = null) {
 
         this.validateListener(listener, 'remove');
 

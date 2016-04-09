@@ -1,24 +1,23 @@
-import MNode = module("core/Node");
+import MNode = require("core/Node");
 
-import MBullet = module("game/components/Bullet");
+import MBullet = require("game/components/Bullet");
 
-export class BulletAge extends MNode.ash.core.Node {
+export class BulletAge extends MNode.ash.core.Node<BulletAge> {
 
-    public bullet = null;
+    public bullet: MBullet.Bullet = null;
 
-    public types: any;
+    public static types = {
+        bullet: MBullet.Bullet
+    };
 
     constructor() {
         super();
-        this.types = {
-            bullet: MBullet.Bullet
-        }
     }
 
 }
 
 //i hope there is a better way :)
-BulletAge.prototype.bullet = null;
-BulletAge.prototype.types = {
-    bullet: MBullet.Bullet
-}
+//BulletAge.prototype.bullet = null;
+//BulletAge.prototype.types = {
+//    bullet: MBullet.Bullet
+//}

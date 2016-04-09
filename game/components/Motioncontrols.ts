@@ -1,18 +1,7 @@
-import MPoint = module("tools/Point");
+import MPoint = require("tools/Point");
+import Components = require("core/Components");
 
-export class MotionControls {
-
-    public left = null;
-    public right = null;
-    public accelerate = null;
-    public accelerationRate = null;
-    public rotationRate = null;
-
-    constructor(left, right, accelerate, accelerationRate, rotationRate) {
-        this.left = left;
-        this.right = right;
-        this.accelerate = accelerate;
-        this.accelerationRate = accelerationRate;
-        this.rotationRate = rotationRate;
+export class MotionControls implements  Components.ash.core.IComponents {
+    constructor(public left: number, public right: number, public accelerate: number, public accelerationRate: number, public rotationRate: number) {
     }
 }

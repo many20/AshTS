@@ -1,9 +1,9 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports"], function (require, exports) {
+    "use strict";
     var Asteroid = (function () {
         function Asteroid() {
         }
         return Asteroid;
-    })();
-    exports.Asteroid = Asteroid;    
-})
-//@ sourceMappingURL=Asteroid.js.map
+    }());
+    exports.Asteroid = Asteroid;
+});

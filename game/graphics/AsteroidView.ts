@@ -1,19 +1,21 @@
-export class AsteroidView {
+import View = require("core/IView");
+
+export class AsteroidView implements View.ash.core.IView {
 
     public x:number = 0;
     public y: number = 0;
     public width: number = 0;
     public height: number = 0;
     public rotation: number = 0;
-    public graphics = null;
+    public graphics: CanvasRenderingContext2D = null;
     public radius: number = 0;
-    public points: any[] = null;
+    public points: {x: number, y: number}[] = null;
 
-    constructor(radius, graphics) {
+    constructor(radius: number, graphics: CanvasRenderingContext2D) {
         this.initialise(radius, graphics);
     }
 
-    public initialise(radius, graphics) {
+    public initialise(radius: number, graphics: CanvasRenderingContext2D) {
         this.graphics = graphics;
         this.radius = radius;
         this.width = radius;
@@ -46,6 +48,6 @@ export class AsteroidView {
         graphics.lineTo(this.radius, 0);
         graphics.fill();
         graphics.restore();
-    
+    }
 
 }

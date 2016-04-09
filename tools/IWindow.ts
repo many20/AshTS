@@ -3,5 +3,5 @@ export interface IWindow extends Window {
     cancelRequestAnimFrame(callback: any, element?: any): any;
     mg: any;
     CurrentApp: any;
-    DEBUG: bool;
+    DEBUG: boolean;
 }

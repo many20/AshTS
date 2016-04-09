@@ -1,17 +1,19 @@
-export class BulletView {
+import View = require("core/IView");
+
+export class BulletView implements View.ash.core.IView {
 
     public x: number = 0;
     public y: number = 0;
     public width: number = 4;
     public height: number = 4;
     public rotation: number = 0;
-    public graphics = null;
+    public graphics: CanvasRenderingContext2D = null;
 
-    constructor(graphics) {
+    constructor(graphics: CanvasRenderingContext2D) {
         this.initialise(graphics);
     }
 
-    public initialise(graphics) {
+    public initialise(graphics: CanvasRenderingContext2D) {
         this.graphics = graphics;
         this.draw();
         return this;

@@ -1,30 +1,29 @@
-import MNode = module("core/Node");
+import MNode = require("core/Node");
 
-import MPosition = module("game/components/Position");
-import MDisplay = module("game/components/Display");
+import MPosition = require("game/components/Position");
+import MDisplay = require("game/components/Display");
 
-export class Render extends MNode.ash.core.Node {
+export class Render extends MNode.ash.core.Node<Render> {
 
-    public position = null;
-    public display = null;
+    public position: MPosition.Position = null;
+    public display: MDisplay.Display = null;
 
-    public types: any;
+    public static types = {
+        position: MPosition.Position,
+        display: MDisplay.Display
+    }
 
     constructor() {
         super();
-        this.types = {
-            position: MPosition.Position,
-            motion: MDisplay.Display
-        }
     }
 
 }
 
 
 //i hope there is a better way :)
-Render.prototype.position = null;
-Render.prototype.display = null;
-Render.prototype.types = {
-    position: MPosition.Position,
-    motion: MDisplay.Display
-}
+//Render.prototype.position = null;
+//Render.prototype.display = null;
+//Render.prototype.types = {
+//    position: MPosition.Position,
+//    display: MDisplay.Display
+//}

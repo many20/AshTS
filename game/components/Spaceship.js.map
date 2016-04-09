@@ -1,1 +1,1 @@
-{"version":3,"file":"Spaceship.js","sources":["Spaceship.ts"],"names":["Spaceship","Spaceship.constructor"],"mappings":"AAAA;IAAA;QACIA,SADSA,SAASA;QAElBC,CAACA;QACLD;AAACA,IAADA,CAACA,IAAA;IAHD,8BAGC,IAAA;;AAAA"}
+{"version":3,"file":"Spaceship.js","sourceRoot":"","sources":["Spaceship.ts"],"names":[],"mappings":";;IAEA;QACI;QACA,CAAC;QACL,gBAAC;IAAD,CAAC,AAHD,IAGC;IAHY,iBAAS,YAGrB,CAAA"}

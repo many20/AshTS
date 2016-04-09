@@ -1,8 +1,16 @@
 export module ash.tools {
 
     export interface IDictionary {
-
+        add: (key, value) => void;
+        remove: (key) => any;
+        getValue: (key) => any;
+        getIndex: (key) => number;
+        has: (key) => boolean;
+        values: () => any[];
+        forEach: (action: (key, value) => string) => void;
     }
+
+    //TODO: replace with Map
 
     export class Dictionary implements IDictionary {
 
@@ -14,7 +22,7 @@ export module ash.tools {
             this._values = [];
         }
 
-        add(key, value) {
+        add(key, value): void {
             var keyIndex = this.getIndex(key);
             if (keyIndex >= 0) {
                 this._values[keyIndex] = value;
@@ -22,7 +30,8 @@ export module ash.tools {
                 this._keys.push(key);
                 this._values.push(value);
             }
-        };
+        }
+        
         remove(key): any {
             var keyIndex = this.getIndex(key);
             if (keyIndex >= 0) {
@@ -33,16 +42,18 @@ export module ash.tools {
             } else {
                 throw "Key does not exist";
             }
-        };
-        getValue(key) {
+        }
+        
+        getValue(key): any {
             var value = null;
             var keyIndex = this.getIndex(key);
             if (keyIndex >= 0) {
                 value = this._values[keyIndex];
             }
             return value;
-        };
-        getIndex(testKey) {
+        }
+        
+        getIndex(testKey): number {
             var i = 0,
                 len = this._keys.length,
                 key;
@@ -53,8 +64,9 @@ export module ash.tools {
                 }
             }
             return -1;
-        };
-        has(testKey) {
+        }
+        
+        has(testKey): boolean {
             var i = 0,
                 len = this._keys.length,
                 key;
@@ -65,22 +77,24 @@ export module ash.tools {
                 }
             }
             return false;
-        };
+        }
+        
         values(): any[] {
             var i = 0,
                 len = this._keys.length,
-                key,
+                //key,
                 value;
             var arValue: any[] = [];
 
             for (; i < len; ++i) {
-                key = this._keys[i];
+                //key = this._keys[i];
                 value = this._values[i];
                 arValue.push(value);
             }
             return arValue;
         }
-        forEach(action) {
+        
+        forEach(action): boolean {
             var i = 0,
                 len = this._keys.length,
                 key,
@@ -95,7 +109,7 @@ export module ash.tools {
                 }
             }
             return true;
-        };
+        }
 
     }
 }

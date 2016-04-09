@@ -1,8 +1,7 @@
-export class Display {
+import View = require("core/IView");
+import Components = require("core/Components");
 
-    public graphic;
-
-    constructor(graphic) {
-        this.graphic = graphic;
+export class Display implements  Components.ash.core.IComponents {
+    constructor(public graphic: View.ash.core.IView) {
     }
 }

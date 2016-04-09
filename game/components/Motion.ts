@@ -1,14 +1,11 @@
-import MPoint = module("tools/Point");
+import MPoint = require("tools/Point");
+import Components = require("core/Components");
 
-export class Motion {
+export class Motion implements Components.ash.core.IComponents {
 
     public velocity: MPoint.Point = null;
-    public angularVelocity = angularVelocity;
-    public damping = damping;
 
-    constructor(velocityX, velocityY, angularVelocity, damping) {
+    constructor(velocityX, velocityY, public angularVelocity, public damping) {
         this.velocity = new MPoint.Point(velocityX, velocityY);
-        this.angularVelocity = angularVelocity;
-        this.damping = damping;
     }
 }

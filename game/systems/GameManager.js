@@ -1,23 +1,14 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "core/System", "game/nodes/SpaceShipCollision", "game/nodes/AsteroidCollision", "game/nodes/BulletCollision", "tools/Point"], function(require, exports, __MSystem__, __MSpaceShipCollision__, __MAsteroidCollision__, __MBulletCollision__, __MPoint__) {
-    var MSystem = __MSystem__;
-
-    var MSpaceShipCollision = __MSpaceShipCollision__;
-
-    var MAsteroidCollision = __MAsteroidCollision__;
-
-    var MBulletCollision = __MBulletCollision__;
-
-    var MPoint = __MPoint__;
-
+define(["require", "exports", "core/System", "game/nodes/SpaceShipCollision", "game/nodes/AsteroidCollision", "game/nodes/BulletCollision", "tools/Point"], function (require, exports, MSystem, MSpaceShipCollision, MAsteroidCollision, MBulletCollision, MPoint) {
+    "use strict";
     var GameManager = (function (_super) {
         __extends(GameManager, _super);
         function GameManager(gameState, creator) {
-                _super.call(this);
+            _super.call(this);
             this.gameState = null;
             this.creator = null;
             this.spaceships = null;
@@ -36,31 +27,34 @@ define(["require", "exports", "core/System", "game/nodes/SpaceShipCollision", "g
             this.bullets = game.getNodeList(MBulletCollision.BulletCollision);
         };
         GameManager.prototype.update = function (time) {
-            if(this.spaceships.empty()) {
-                if(this.gameState.lives > 0) {
+            if (this.spaceships.empty()) {
+                if (this.gameState.lives > 0) {
                     var newSpaceshipPosition = new MPoint.Point(this.gameState.width * 0.5, this.gameState.height * 0.5);
                     var clearToAddSpaceship = true;
-                    for(var asteroid = this.asteroids.head; asteroid; asteroid = asteroid.next) {
-                        if(asteroid.position.position.distanceTo(newSpaceshipPosition) <= asteroid.position.collisionRadius + 50) {
+                    for (var asteroid = this.asteroids.head; asteroid; asteroid = asteroid.next) {
+                        if (asteroid.position.position.distanceTo(newSpaceshipPosition) <= asteroid.position.collisionRadius + 50) {
                             clearToAddSpaceship = false;
                             break;
                         }
                     }
-                    if(clearToAddSpaceship) {
+                    if (clearToAddSpaceship) {
                         this.creator.createSpaceship();
                         this.gameState.lives--;
                     }
-                } else {
+                }
+                else {
                 }
             }
-            if(this.asteroids.empty() && this.bullets.empty() && !this.spaceships.empty()) {
+            if (this.asteroids.empty() && this.bullets.empty() && !this.spaceships.empty()) {
+                // next level
                 var spaceship = this.spaceships.head;
                 this.gameState.level++;
                 var asteroidCount = 2 + this.gameState.level;
-                for(var i = 0; i < asteroidCount; ++i) {
+                for (var i = 0; i < asteroidCount; ++i) {
+                    // check not on top of spaceship
                     do {
                         var position = new MPoint.Point(Math.random() * this.gameState.width, Math.random() * this.gameState.height);
-                    }while(position.distanceTo(spaceship.position.position) <= 80);
+                    } while (position.distanceTo(spaceship.position.position) <= 80);
                     this.creator.createAsteroid(30, position.x, position.y);
                 }
             }
@@ -71,7 +65,6 @@ define(["require", "exports", "core/System", "game/nodes/SpaceShipCollision", "g
             this.bullets = null;
         };
         return GameManager;
-    })(MSystem.ash.core.System);
-    exports.GameManager = GameManager;    
-})
-//@ sourceMappingURL=GameManager.js.map
+    }(MSystem.ash.core.System));
+    exports.GameManager = GameManager;
+});

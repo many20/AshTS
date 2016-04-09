@@ -3,3 +3,15 @@ D:\xampp\htdocs\AshTS\AshTS\bin\AshTS.pdb
 D:\xampp\htdocs\AshTS\AshTS\obj\Debug\AshTS.csprojResolveAssemblyReference.cache
 D:\xampp\htdocs\AshTS\AshTS\obj\Debug\AshTS.dll
 D:\xampp\htdocs\AshTS\AshTS\obj\Debug\AshTS.pdb
+C:\Users\MarioAdrian\Desktop\New folder (4)\AshTS-master\bin\AshTS.dll.config
+C:\Users\MarioAdrian\Desktop\New folder (4)\AshTS-master\bin\AshTS.dll
+C:\Users\MarioAdrian\Desktop\New folder (4)\AshTS-master\bin\AshTS.pdb
+C:\Users\MarioAdrian\Desktop\New folder (4)\AshTS-master\obj\Debug\AshTS.csprojResolveAssemblyReference.cache
+C:\Users\MarioAdrian\Desktop\New folder (4)\AshTS-master\obj\Debug\AshTS.dll
+C:\Users\MarioAdrian\Desktop\New folder (4)\AshTS-master\obj\Debug\AshTS.pdb
+C:\Users\MarioAdrian\Desktop\ash\AshTS-master\bin\AshTS.dll.config
+C:\Users\MarioAdrian\Desktop\ash\AshTS-master\bin\AshTS.dll
+C:\Users\MarioAdrian\Desktop\ash\AshTS-master\bin\AshTS.pdb
+C:\Users\MarioAdrian\Desktop\ash\AshTS-master\obj\Debug\AshTS.dll
+C:\Users\MarioAdrian\Desktop\ash\AshTS-master\obj\Debug\AshTS.pdb
+C:\Users\MarioAdrian\Desktop\ash\AshTS-master\obj\Debug\AshTS.csprojResolveAssemblyReference.cache

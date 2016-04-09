@@ -1,4 +1,5 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports"], function (require, exports) {
+    "use strict";
     var SpaceshipView = (function () {
         function SpaceshipView(graphics) {
             this.x = 0;
@@ -30,7 +31,6 @@ define(["require", "exports"], function(require, exports) {
             graphics.restore();
         };
         return SpaceshipView;
-    })();
-    exports.SpaceshipView = SpaceshipView;    
-})
-//@ sourceMappingURL=SpaceshipView.js.map
+    }());
+    exports.SpaceshipView = SpaceshipView;
+});

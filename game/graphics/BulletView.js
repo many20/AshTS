@@ -1,4 +1,5 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports"], function (require, exports) {
+    "use strict";
     var BulletView = (function () {
         function BulletView(graphics) {
             this.x = 0;
@@ -25,7 +26,6 @@ define(["require", "exports"], function(require, exports) {
             graphics.restore();
         };
         return BulletView;
-    })();
-    exports.BulletView = BulletView;    
-})
-//@ sourceMappingURL=BulletView.js.map
+    }());
+    exports.BulletView = BulletView;
+});

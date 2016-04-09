@@ -1,4 +1,4 @@
-import MIWindow = module("tools/IWindow");
+import MIWindow = require("tools/IWindow");
 declare var window: MIWindow.IWindow;
 
 // Class
@@ -12,6 +12,10 @@ export class Keypoll {
     public left = "37";
     public right = "39";
     public fire = "32";
+
+    constructor() {
+        this.addListeners();
+    }
 
     onKeyDown(event) {
         event.preventDefault();
@@ -27,16 +31,13 @@ export class Keypoll {
     }
 
     addListeners() {
-        this.global.addEventListener("keydown", this.onKeyDown);
-        this.global.addEventListener("keyup", this.onKeyUp);
+        this.global.addEventListener("keydown", this.onKeyDown.bind(this));
+        this.global.addEventListener("keyup", this.onKeyUp.bind(this));
     }
-
-    addListeners();
-
 
     getKeys(): any {
         return this.keys;
-    };
+    }
 
     isDown(testKey) {
         for (var keyCode in this.keys) {
@@ -45,7 +46,7 @@ export class Keypoll {
             }
         }
         return false;
-    };
+    }
 
     addKeyboardCodeEnum() {
 

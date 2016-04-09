@@ -1,49 +1,51 @@
 
 //core
-import MEntity = module("core/Entity");
+import MEntity = require("core/Entity");
 
 //tools
-import MKeyPoll = module("tools/KeyPoll");
+import MKeyPoll = require("tools/KeyPoll");
 
 
 //game components
-import MAsteroid = module("game/components/Asteroid");
-import MSpaceship = module("game/components/Spaceship");
-import MBullet = module("game/components/Bullet");
-import MPosition = module("game/components/Position");
-import MMotion = module("game/components/Motion");
-import MMotionControls = module("game/components/MotionControls");
-import MGun = module("game/components/Gun");
-import MGunControls = module("game/components/GunControls");
-import MDisplay = module("game/components/Display");
+import MAsteroid = require("game/components/Asteroid");
+import MSpaceship = require("game/components/Spaceship");
+import MBullet = require("game/components/Bullet");
+import MPosition = require("game/components/Position");
+import MMotion = require("game/components/Motion");
+import MMotionControls = require("game/components/MotionControls");
+import MGun = require("game/components/Gun");
+import MGunControls = require("game/components/GunControls");
+import MDisplay = require("game/components/Display");
 
 //graphics
-import MAsteroidView = module("game/graphics/AsteroidView");
-import MSpaceshipView = module("game/graphics/SpaceshipView");
-import MBulletView = module("game/graphics/BulletView");
+import MAsteroidView = require("game/graphics/AsteroidView");
+import MSpaceshipView = require("game/graphics/SpaceshipView");
+import MBulletView = require("game/graphics/BulletView");
 
+//core
+import MEngine = require("core/Engine");
 
 
 export class EntityCreator {
 
-    public game = null;
-    public graphics = null;
+    public game: MEngine.ash.core.Engine = null;
+    public graphics: CanvasRenderingContext2D = null;
 
-    constructor(game, graphics) {
+    constructor(game: MEngine.ash.core.Engine, graphics: CanvasRenderingContext2D) {
         this.initialise(game, graphics);
     }
 
-    public initialise(game, graphics) {
+    public initialise(game: MEngine.ash.core.Engine, graphics: CanvasRenderingContext2D) {
         this.game = game;
         this.graphics = graphics;
         return this;
-    };
+    }
 
-    public destroyEntity(entity) {
+    public destroyEntity(entity: MEntity.ash.core.Entity) {
         this.game.removeEntity(entity);
-    };
+    }
 
-    public createAsteroid(radius, x, y) {
+    public createAsteroid(radius: number, x: number, y: number) {
         var asteroid = new MEntity.ash.core.Entity()
             .add(new MAsteroid.Asteroid())
             .add(new MPosition.Position(x, y, 0, radius))
@@ -58,7 +60,7 @@ export class EntityCreator {
             .add(new MDisplay.Display(new MAsteroidView.AsteroidView(radius, this.graphics)));
         this.game.addEntity(asteroid);
         return asteroid;
-    };
+    }
 
     public createSpaceship() {
         var spaceship = new MEntity.ash.core.Entity()
@@ -79,7 +81,7 @@ export class EntityCreator {
             .add(new MDisplay.Display(new MSpaceshipView.SpaceshipView(this.graphics)));
         this.game.addEntity(spaceship);
         return spaceship;
-    };
+    }
 
     public createUserBullet(gun, parentPosition) {
         var cos = Math.cos(parentPosition.rotation);
@@ -93,5 +95,5 @@ export class EntityCreator {
             .add(new MDisplay.Display(new MBulletView.BulletView(this.graphics)));
         this.game.addEntity(bullet);
         return bullet;
-    };
+    }
 }

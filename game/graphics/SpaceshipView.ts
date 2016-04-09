@@ -1,21 +1,23 @@
-export class SpaceshipView {
+import View = require("core/IView");
 
-        constructor( graphics ) {
-			this.initialise( graphics );
-        }
+export class SpaceshipView implements View.ash.core.IView {
 
 		public x:number = 0;
 		public y: number = 0;
 		public width: number = 20;
 		public height: number = 20;
 		public rotation: number = 0;
-		public graphics = null;
+        public graphics: CanvasRenderingContext2D = null;
 
-		public initialise( graphics ) {
+        constructor(graphics: CanvasRenderingContext2D) {
+            this.initialise(graphics);
+        }
+
+        public initialise(graphics: CanvasRenderingContext2D) {
 			this.graphics = graphics;
 			this.draw();
 			return this;
-		};
+		}
 
 		public draw() {
 			var graphics = this.graphics;

@@ -1,8 +1,7 @@
-import MEngine = module("core/Engine");
+import MEngine = require("core/Engine");
 
-export module ash.core
-{
-	/**
+export module ash.core {
+    /**
 	 * The base class for a system.
 	 * 
 	 * <p>A system is part of the core functionality of the game. After a system is added to the engine, its
@@ -14,50 +13,47 @@ export module ash.core
 	 * node lists - collections of nodes. Each node contains the components from an entity in the engine
 	 * that match the node.</p>
 	 */
-	export class System
-	{
+    export class System { //abstract
 
-		/**
+        /**
 		 * Used internally to manage the list of systems within the engine. The previous system in the list.
 		 */
-	    public previous: System = null;
-		/**
+        public previous: System = null;
+        /**
 		 * Used internally to manage the list of systems within the engine. The next system in the list.
 		 */
-	    public next: System = null;
-		/**
+        public next: System = null;
+        /**
 		 * Used internally to hold the priority of this system within the system list. This is 
 		 * used to order the systems so they are updated in the correct order.
 		 */
-		public priority :number = 0;
-		
-        /* Empty constructor */
-		constructor() {
-		}
+        public priority: number = 0;
 
-		/**
+        /* Empty constructor */
+        constructor() {
+        }
+
+        /**
 		 * Called just after the system is added to the engine, before any calls to the update method.
 		 * Override this method to add your own functionality.
 		 * 
 		 * @param engine The engine the system was added to.
 		 */
-		public addToEngine(engine: any) //MEngine.core.ash.Engine
-		{
-			
-		}
-		
-		/**
+        public addToEngine(engine: MEngine.ash.core.Engine) { //abstract
+
+        }
+
+        /**
 		 * Called just after the system is removed from the engine, after all calls to the update method.
 		 * Override this method to add your own functionality.
 		 * 
 		 * @param engine The engine the system was removed from.
 		 */
-		public removeFromEngine(engine: any) //MEngine.core.ash.Engine
-		{
-			
-		}
-		
-		/**
+        public removeFromEngine(engine: MEngine.ash.core.Engine) { //abstract
+
+        }
+
+        /**
 		 * After the system is added to the engine, this method is called every frame until the system
 		 * is removed from the engine. Override this method to add your own functionality.
 		 * 
@@ -67,17 +63,16 @@ export module ash.core
 		 * 
 		 * @param time The duration, in seconds, of the frame.
 		 */
-		public update( time :number ) 
-		{
-			
-		}
+        public update(time: number) { //abstract
+
+        }
 
 
-		public is(type) {
-		    return type.prototype.isPrototypeOf(this);
-		}
+        public is(type) {
+            return type.prototype.isPrototypeOf(this);
+        }
 
-	}
+    }
 }
 
 //i hope there is a better way :)

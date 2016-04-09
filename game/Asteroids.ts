@@ -1,42 +1,42 @@
 
-import MEntityCreator = module("game/EntityCreator");
+import MEntityCreator = require("game/EntityCreator");
 
 //game components
-import MGameState = module("game/components/GameState");
+import MGameState = require("game/components/GameState");
 
 //game systems
-import MGameManager = module("game/systems/GameManager");
-import MMotionControlSystem = module("game/systems/MotionControlSystem");
-import MGunControlSystem = module("game/systems/GunControlSystem");
-import MBulletAgeSystem = module("game/systems/BulletAgeSystem");
-import MMovementSystem = module("game/systems/MovementSystem");
-import MCollisionSystem = module("game/systems/CollisionSystem");
-import MRenderSystem = module("game/systems/RenderSystem");
-import MSystemPriorities = module("game/systems/SystemPriorities");
+import MGameManager = require("game/systems/GameManager");
+import MMotionControlSystem = require("game/systems/MotionControlSystem");
+import MGunControlSystem = require("game/systems/GunControlSystem");
+import MBulletAgeSystem = require("game/systems/BulletAgeSystem");
+import MMovementSystem = require("game/systems/MovementSystem");
+import MCollisionSystem = require("game/systems/CollisionSystem");
+import MRenderSystem = require("game/systems/RenderSystem");
+import MSystemPriorities = require("game/systems/SystemPriorities");
 
 //core
-import MEngine = module("core/Engine");
-import MSystem = module("core/System");
+import MEngine = require("core/Engine");
+import MSystem = require("core/System");
 
 
 //tools
-import MDictionary = module("tools/Dictionary");
-import MSignal = module("tools/Signal");
-import MTickProvider = module("tools/TickProvider");
-import MKeyPoll = module("tools/KeyPoll");
+import MDictionary = require("tools/Dictionary");
+import MSignal = require("tools/Signal");
+import MTickProvider = require("tools/TickProvider");
+import MKeyPoll = require("tools/KeyPoll");
 
 
 
 export class Asteroids {
 
-    public width = 0;
-    public height = 0;
-    public engine = null;
-    public gameState = null;
-    public tickProvider = null;
+    public width: number = 0;
+    public height: number = 0;
+    public engine: MEngine.ash.core.Engine = null;
+    public gameState: MGameState.GameState = null;
+    public tickProvider: MTickProvider.TickProvider = null;
 
-    initialise(canvas) {
-        var canvasContext = canvas.getContext("2d");
+    initialise(canvas: HTMLCanvasElement) {
+        var canvasContext: CanvasRenderingContext2D = canvas.getContext("2d");
 
         this.width = canvas.width;
         this.height = canvas.height;
@@ -77,7 +77,7 @@ export class Asteroids {
              MSystemPriorities.SystemPriorities.render
         );
         this.tickProvider = new MTickProvider.TickProvider();
-    };
+    }
 
     start() {
         this.gameState.level = 0;
@@ -86,6 +86,6 @@ export class Asteroids {
 
         this.tickProvider.add(this.engine.update, this.engine);
         this.tickProvider.start();
-    };
+    }
 
 }

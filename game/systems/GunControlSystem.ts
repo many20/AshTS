@@ -1,39 +1,44 @@
 
-import MSystem = module("core/System");
+import MSystem = require("core/System");
+import MEngine = require("core/Engine");
+import MEntityCreator = require("game/EntityCreator");
+import MNodeList = require("core/NodeList");
 
-import MGunControl = module("game/nodes/GunControl");
+import MGunControl = require("game/nodes/GunControl");
+import MKeyPoll = require("tools/KeyPoll");
 
 export class GunControlSystem extends MSystem.ash.core.System {
 
-    constructor(keyPoll, creator) {
+    constructor(keyPoll: MKeyPoll.Keypoll, creator: MEntityCreator.EntityCreator) {
         super();
         this.initialise(keyPoll, creator);
     }
 
-    public keyPoll = null;
-    public creator = null;
-    public nodeList = null;
-    public initialise(keyPoll, creator) {
+    public keyPoll: MKeyPoll.Keypoll = null;
+    public creator: MEntityCreator.EntityCreator = null;
+    public nodeList: MNodeList.ash.core.NodeList<MGunControl.GunControl> = null;
+
+    public initialise(keyPoll: MKeyPoll.Keypoll, creator: MEntityCreator.EntityCreator) {
         this.keyPoll = keyPoll;
         this.creator = creator;
         return this;
     }
 
-    public addToEngine(engine) {
-        this.nodeList = engine.getNodeList(MGunControl.GunControl);
+    public addToEngine(engine: MEngine.ash.core.Engine) {
+        this.nodeList = engine.getNodeList<MGunControl.GunControl>(MGunControl.GunControl);
     }
 
-    public removeFromEngine(engine) {
+    public removeFromEngine(engine: MEngine.ash.core.Engine) {
         this.nodeList = null;
     }
 
-    public update(time) {
+    public update(time: number) {
         for (var node = this.nodeList.head; node; node = node.next) {
             this.updateNode(node, time);
         }
     }
 
-    public updateNode(node, time) {
+    public updateNode(node: MGunControl.GunControl, time: number) {
         var control = node.control,
             position = node.position,
             gun = node.gun;

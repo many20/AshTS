@@ -1,22 +1,22 @@
-///<reference path="Scripts/typings/require.d.ts"/>
-///<reference path="Scripts/typings/webgl.d.ts"/>
-///<reference path="Scripts/libs/jquery/jquery-int.d.ts"/>
+///<reference path="Scripts/typings/tsd.d.ts"/>
 
-import MIWindow = module("tools/IWindow");
+///<reference path="Scripts/typings/modules.d.ts"/>
+
+import MIWindow = require("tools/IWindow");
 declare var window: MIWindow.IWindow;
 
-import JQuery = module("Scripts/libs/jquery/jquery");
-var $: JQueryStatic = JQuery.$;
 
-import MDat = module("Scripts/libs/dat.gui/dat.gui");
-var dat: any = MDat.gui;
+import $ = require("Scripts/libs/jquery");
+import dat = require("Scripts/libs/dat.gui");
 
-import MAsteroids = module("game/Asteroids");
+import domReady = require('Scripts/libs/domReady');
+
+import MAsteroids = require("game/Asteroids");
 
 window.DEBUG = false;
 
 export module App {
-    
+
     export var MyGame;
     export var MyDat = dat;
     export var AppStarted = false;
@@ -35,8 +35,7 @@ export module App {
             asteroids.initialise(canvasElem);
             asteroids.start();
 
-
-            window.mg = window.CurrentApp.App.MyGame;
+            //window.mg = window.CurrentApp.App.MyGame;
             AppStarted = true;
         } else {
             console.log("App is singleton and is already started!");
@@ -76,8 +75,8 @@ export module App {
 
     }
 
-    require(['Scripts/libs/domReady!'], function (doc) {
-
+    //require(['Scripts/libs/domReady!'], function (doc) {
+    domReady(() => {
         console.log("document ready");
 
         //#region "DAT GUI TESTS"
@@ -98,7 +97,6 @@ export module App {
         //$("body").append(button);
 
         Start();
-
     });
 
 
@@ -117,26 +115,6 @@ class InstanceLoader {
         return instance;
     }
 }
-
-window.requestAnimFrame = (function () {
-    return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function (/* function */ callback, /* DOMElement */ element?) {
-            return window.setTimeout(callback, 1000 / 60);
-        };
-})();
-
-window.cancelRequestAnimFrame = (function () {
-    return window.cancelAnimationFrame ||
-        window.webkitCancelRequestAnimationFrame ||
-        window.mozCancelRequestAnimationFrame ||
-        window.oCancelRequestAnimationFrame ||
-        window.msCancelRequestAnimationFrame ||
-        clearTimeout
-})();
 
 
 

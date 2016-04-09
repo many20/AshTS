@@ -1,17 +1,14 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "core/System", "game/nodes/GunControl"], function(require, exports, __MSystem__, __MGunControl__) {
-    var MSystem = __MSystem__;
-
-    var MGunControl = __MGunControl__;
-
+define(["require", "exports", "core/System", "game/nodes/GunControl"], function (require, exports, MSystem, MGunControl) {
+    "use strict";
     var GunControlSystem = (function (_super) {
         __extends(GunControlSystem, _super);
         function GunControlSystem(keyPoll, creator) {
-                _super.call(this);
+            _super.call(this);
             this.keyPoll = null;
             this.creator = null;
             this.nodeList = null;
@@ -29,7 +26,7 @@ define(["require", "exports", "core/System", "game/nodes/GunControl"], function(
             this.nodeList = null;
         };
         GunControlSystem.prototype.update = function (time) {
-            for(var node = this.nodeList.head; node; node = node.next) {
+            for (var node = this.nodeList.head; node; node = node.next) {
                 this.updateNode(node, time);
             }
         };
@@ -37,13 +34,12 @@ define(["require", "exports", "core/System", "game/nodes/GunControl"], function(
             var control = node.control, position = node.position, gun = node.gun;
             gun.shooting = this.keyPoll.isDown(control.trigger);
             gun.timeSinceLastShot += time;
-            if(gun.shooting && gun.timeSinceLastShot >= gun.minimumShotInterval) {
+            if (gun.shooting && gun.timeSinceLastShot >= gun.minimumShotInterval) {
                 this.creator.createUserBullet(gun, position);
                 gun.timeSinceLastShot = 0;
             }
         };
         return GunControlSystem;
-    })(MSystem.ash.core.System);
-    exports.GunControlSystem = GunControlSystem;    
-})
-//@ sourceMappingURL=GunControlSystem.js.map
+    }(MSystem.ash.core.System));
+    exports.GunControlSystem = GunControlSystem;
+});

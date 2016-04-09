@@ -1,17 +1,13 @@
-import MPoint = module("tools/Point");
+import MPoint = require("tools/Point");
+import Components = require("core/Components");
 
-export class Gun {
+export class Gun implements  Components.ash.core.IComponents {
 
-    public shooting: bool = false;
+    public shooting: boolean = false;
     public timeSinceLastShot: number = 0;
     public offsetFromParent: MPoint.Point = null;
-    public minimumShotInterval: number;
-    public bulletLifetime: number;
 
-    constructor(offsetX, offsetY, minimumShotInterval, bulletLifetime) {
-
+    constructor(offsetX, offsetY, public minimumShotInterval: number, public bulletLifetime: number) {
         this.offsetFromParent = new MPoint.Point( offsetX, offsetY );
-        this.minimumShotInterval = minimumShotInterval;
-        this.bulletLifetime = bulletLifetime;
     }
 }

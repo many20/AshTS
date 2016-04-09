@@ -1,10 +1,10 @@
-define(["require", "exports"], function(require, exports) {
+define(["require", "exports"], function (require, exports) {
+    "use strict";
     var Display = (function () {
         function Display(graphic) {
             this.graphic = graphic;
         }
         return Display;
-    })();
-    exports.Display = Display;    
-})
-//@ sourceMappingURL=Display.js.map
+    }());
+    exports.Display = Display;
+});

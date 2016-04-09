@@ -1,18 +1,14 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "core/System", "game/nodes/Render"], function(require, exports, __MSystem__, __MRender__) {
-    var MSystem = __MSystem__;
-
-    
-    var MRender = __MRender__;
-
+define(["require", "exports", "core/System", "game/nodes/Render"], function (require, exports, MSystem, MRender) {
+    "use strict";
     var RenderSystem = (function (_super) {
         __extends(RenderSystem, _super);
         function RenderSystem(graphicsContext) {
-                _super.call(this);
+            _super.call(this);
             this.context = null;
             this.nodes = null;
             this._count = 0;
@@ -24,7 +20,7 @@ define(["require", "exports", "core/System", "game/nodes/Render"], function(requ
         };
         RenderSystem.prototype.addToEngine = function (engine) {
             this.nodes = engine.getNodeList(MRender.Render);
-            for(var node = this.nodes.head; node; node = node.next) {
+            for (var node = this.nodes.head; node; node = node.next) {
                 this.addToDisplay(node);
             }
             this.nodes.nodeAdded.add(this.addToDisplay, this);
@@ -34,11 +30,12 @@ define(["require", "exports", "core/System", "game/nodes/Render"], function(requ
             this.nodes = null;
         };
         RenderSystem.prototype.addToDisplay = function (node) {
+            // Intentionally left blank
         };
         RenderSystem.prototype.removeFromDisplay = function (node) {
+            // Intentionally left blank
         };
         RenderSystem.prototype.update = function (time) {
-            var node;
             var position;
             var display;
             var graphic;
@@ -46,7 +43,7 @@ define(["require", "exports", "core/System", "game/nodes/Render"], function(requ
             this.context.translate(0, 0);
             this.context.rotate(0);
             this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
-            for(node = this.nodes.head; node; node = node.next) {
+            for (var node = this.nodes.head; node; node = node.next) {
                 display = node.display;
                 graphic = display.graphic;
                 position = node.position;
@@ -58,7 +55,6 @@ define(["require", "exports", "core/System", "game/nodes/Render"], function(requ
             this.context.restore();
         };
         return RenderSystem;
-    })(MSystem.ash.core.System);
-    exports.RenderSystem = RenderSystem;    
-})
-//@ sourceMappingURL=RenderSystem.js.map
+    }(MSystem.ash.core.System));
+    exports.RenderSystem = RenderSystem;
+});

@@ -1,38 +1,41 @@
 
-import MSystem = module("core/System");
+import MSystem = require("core/System");
+import MEngine = require("core/Engine");
+import MNodeList = require("core/NodeList");
 
-import MMotionControl = module("game/nodes/MotionControl");
+import MMotionControl = require("game/nodes/MotionControl");
+import MKeyPoll = require("tools/KeyPoll");
 
 export class MotionControlSystem extends MSystem.ash.core.System {
 
-    constructor(keyPoll) {
+    constructor(keyPoll: MKeyPoll.Keypoll) {
         super();
         this.initialise(keyPoll);
     }
 
-    public keyPoll = null;
-    public nodeList = null;
+    public keyPoll: MKeyPoll.Keypoll = null;
+    public nodeList: MNodeList.ash.core.NodeList<MMotionControl.MotionControl> = null;
 
-    public initialise(keyPoll) {
+    public initialise(keyPoll: MKeyPoll.Keypoll) {
         this.keyPoll = keyPoll;
         return this;
     }
 
-    public addToEngine(engine) {
-        this.nodeList = engine.getNodeList(MMotionControl.MotionControl);
+    public addToEngine(engine: MEngine.ash.core.Engine) {
+        this.nodeList = engine.getNodeList<MMotionControl.MotionControl>(MMotionControl.MotionControl);
     }
 
-    public removeFromEngine(engine) {
+    public removeFromEngine(engine: MEngine.ash.core.Engine) {
         this.nodeList = null;
     }
 
-    public update(time) {
+    public update(time: number) {
         for (var node = this.nodeList.head; node; node = node.next) {
             this.updateNode(node, time);
         }
     }
 
-    public updateNode(node, time) {
+    public updateNode(node: MMotionControl.MotionControl, time: number) {
         var control = node.control;
         var position = node.position;
         var motion = node.motion;

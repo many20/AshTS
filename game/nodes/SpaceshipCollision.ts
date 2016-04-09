@@ -1,14 +1,14 @@
-import MNode = module("core/Node");
+import MNode = require("core/Node");
 
-import MSpaceship = module("game/components/Spaceship");
-import MPosition = module("game/components/Position");
+import MSpaceship = require("game/components/Spaceship");
+import MPosition = require("game/components/Position");
 
-export class SpaceshipCollision extends MNode.ash.core.Node {
+export class SpaceshipCollision extends MNode.ash.core.Node<SpaceshipCollision> {
 
-    public spaceship = null;
-    public position = null;
+    public spaceship: MSpaceship.Spaceship = null;
+    public position: MPosition.Position = null;
 
-    public types: any = {
+    public static  types: any = {
         spaceship: MSpaceship.Spaceship,
         position: MPosition.Position
     }
@@ -20,9 +20,9 @@ export class SpaceshipCollision extends MNode.ash.core.Node {
 }
 
 //i hope there is a better way :)
-SpaceshipCollision.prototype.spaceship = null;
-SpaceshipCollision.prototype.position = null;
-SpaceshipCollision.prototype.types = {
-    spaceship: MSpaceship.Spaceship,
-    position: MPosition.Position
-}
+//SpaceshipCollision.prototype.spaceship = null;
+//SpaceshipCollision.prototype.position = null;
+//SpaceshipCollision.prototype.types = {
+//    spaceship: MSpaceship.Spaceship,
+//    position: MPosition.Position
+//}

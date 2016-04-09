@@ -14,85 +14,80 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="App.js">
-      <DependentUpon>App.ts</DependentUpon>
-    </Content>
-    <Content Include="App.min.js">
-      <DependentUpon>App.ts</DependentUpon>
-    </Content>
-    <Content Include="App.ts" />
+    <TypeScriptCompile Include="App.ts" />
     <Content Include="core\ComponentMatchingFamily.js">
       <DependentUpon>ComponentMatchingFamily.ts</DependentUpon>
     </Content>
     <Content Include="core\ComponentMatchingFamily.min.js">
       <DependentUpon>ComponentMatchingFamily.ts</DependentUpon>
     </Content>
-    <Content Include="core\ComponentMatchingFamily.ts" />
+    <TypeScriptCompile Include="core\ComponentMatchingFamily.ts" />
     <Content Include="core\Engine.js">
       <DependentUpon>Engine.ts</DependentUpon>
     </Content>
     <Content Include="core\Engine.min.js">
       <DependentUpon>Engine.ts</DependentUpon>
     </Content>
-    <Content Include="core\Engine.ts" />
+    <TypeScriptCompile Include="core\Engine.ts" />
     <Content Include="core\Entity.js">
       <DependentUpon>Entity.ts</DependentUpon>
     </Content>
     <Content Include="core\Entity.min.js">
       <DependentUpon>Entity.ts</DependentUpon>
     </Content>
-    <Content Include="core\Entity.ts" />
+    <TypeScriptCompile Include="core\Entity.ts" />
     <Content Include="core\EntityList.js">
       <DependentUpon>EntityList.ts</DependentUpon>
     </Content>
     <Content Include="core\EntityList.min.js">
       <DependentUpon>EntityList.ts</DependentUpon>
     </Content>
-    <Content Include="core\EntityList.ts" />
+    <TypeScriptCompile Include="core\EntityList.ts" />
     <Content Include="core\IFamily.js">
       <DependentUpon>IFamily.ts</DependentUpon>
     </Content>
     <Content Include="core\IFamily.min.js">
       <DependentUpon>IFamily.ts</DependentUpon>
     </Content>
-    <Content Include="core\IFamily.ts" />
+    <TypeScriptCompile Include="core\IFamily.ts" />
     <Content Include="core\Node.js">
       <DependentUpon>Node.ts</DependentUpon>
     </Content>
     <Content Include="core\Node.min.js">
       <DependentUpon>Node.ts</DependentUpon>
     </Content>
-    <Content Include="core\Node.ts" />
+    <TypeScriptCompile Include="core\Node.ts" />
     <Content Include="core\NodeList.js">
       <DependentUpon>NodeList.ts</DependentUpon>
     </Content>
     <Content Include="core\NodeList.min.js">
       <DependentUpon>NodeList.ts</DependentUpon>
     </Content>
-    <Content Include="core\NodeList.ts" />
+    <TypeScriptCompile Include="core\NodeList.ts" />
     <Content Include="core\NodePool.js">
       <DependentUpon>NodePool.ts</DependentUpon>
     </Content>
     <Content Include="core\NodePool.min.js">
       <DependentUpon>NodePool.ts</DependentUpon>
     </Content>
-    <Content Include="core\NodePool.ts" />
+    <TypeScriptCompile Include="core\NodePool.ts" />
     <Content Include="core\System.js">
       <DependentUpon>System.ts</DependentUpon>
     </Content>
     <Content Include="core\System.min.js">
       <DependentUpon>System.ts</DependentUpon>
     </Content>
-    <Content Include="core\System.ts" />
+    <TypeScriptCompile Include="core\System.ts" />
     <Content Include="core\SystemList.js">
       <DependentUpon>SystemList.ts</DependentUpon>
     </Content>
     <Content Include="core\SystemList.min.js">
       <DependentUpon>SystemList.ts</DependentUpon>
     </Content>
-    <Content Include="core\SystemList.ts" />
+    <TypeScriptCompile Include="core\SystemList.ts" />
     <Content Include="game\Asteroids.js">
       <DependentUpon>Asteroids.ts</DependentUpon>
     </Content>
@@ -280,68 +275,65 @@
       <DependentUpon>SystemPriorities.ts</DependentUpon>
     </Content>
     <Content Include="index.htm" />
-    <Content Include="game\Asteroids.ts" />
-    <Content Include="game\components\Asteroid.ts" />
-    <Content Include="game\components\Bullet.ts" />
-    <Content Include="game\components\Display.ts" />
-    <Content Include="game\components\Gamestate.ts" />
-    <Content Include="game\components\Gun.ts" />
-    <Content Include="game\components\Guncontrols.ts" />
-    <Content Include="game\components\Motion.ts" />
-    <Content Include="game\components\Motioncontrols.ts" />
-    <Content Include="game\components\Position.ts" />
-    <Content Include="game\components\Spaceship.ts" />
-    <Content Include="game\EntityCreator.ts" />
-    <Content Include="game\graphics\AsteroidView.ts" />
-    <Content Include="game\graphics\BulletView.ts" />
-    <Content Include="game\graphics\SpaceshipView.ts" />
-    <Content Include="game\nodes\AsteroidCollision.ts" />
-    <Content Include="game\nodes\BulletAge.ts" />
-    <Content Include="game\nodes\BulletCollision.ts" />
-    <Content Include="game\nodes\GunControl.ts" />
-    <Content Include="game\nodes\MotionControl.ts" />
-    <Content Include="game\nodes\Movement.ts" />
-    <Content Include="game\nodes\Render.ts" />
-    <Content Include="game\nodes\SpaceshipCollision.ts" />
-    <Content Include="game\systems\BulletAgeSystem.ts" />
-    <Content Include="game\systems\CollisionSystem.ts" />
-    <Content Include="game\systems\GameManager.ts" />
-    <Content Include="game\systems\GunControlSystem.ts" />
-    <Content Include="game\systems\MotionControlSystem.ts" />
-    <Content Include="game\systems\MovementSystem.ts" />
-    <Content Include="game\systems\RenderSystem.ts" />
-    <Content Include="game\systems\SystemPriorities.ts" />
-    <Content Include="Scripts\libs\dat.gui\dat.color.js" />
-    <Content Include="Scripts\libs\dat.gui\dat.color.min.js" />
-    <Content Include="Scripts\libs\dat.gui\dat.gui.d.ts" />
-    <Content Include="Scripts\libs\dat.gui\dat.gui.js" />
-    <Content Include="Scripts\libs\dat.gui\dat.gui.min.js" />
+    <TypeScriptCompile Include="game\Asteroids.ts" />
+    <TypeScriptCompile Include="game\components\Asteroid.ts" />
+    <TypeScriptCompile Include="game\components\Bullet.ts" />
+    <TypeScriptCompile Include="game\components\Display.ts" />
+    <TypeScriptCompile Include="game\components\Gamestate.ts" />
+    <TypeScriptCompile Include="game\components\Gun.ts" />
+    <TypeScriptCompile Include="game\components\Guncontrols.ts" />
+    <TypeScriptCompile Include="game\components\Motion.ts" />
+    <TypeScriptCompile Include="game\components\Motioncontrols.ts" />
+    <TypeScriptCompile Include="game\components\Position.ts" />
+    <TypeScriptCompile Include="game\components\Spaceship.ts" />
+    <TypeScriptCompile Include="game\EntityCreator.ts" />
+    <TypeScriptCompile Include="game\graphics\AsteroidView.ts" />
+    <TypeScriptCompile Include="game\graphics\BulletView.ts" />
+    <TypeScriptCompile Include="game\graphics\SpaceshipView.ts" />
+    <TypeScriptCompile Include="game\nodes\AsteroidCollision.ts" />
+    <TypeScriptCompile Include="game\nodes\BulletAge.ts" />
+    <TypeScriptCompile Include="game\nodes\BulletCollision.ts" />
+    <TypeScriptCompile Include="game\nodes\GunControl.ts" />
+    <TypeScriptCompile Include="game\nodes\MotionControl.ts" />
+    <TypeScriptCompile Include="game\nodes\Movement.ts" />
+    <TypeScriptCompile Include="game\nodes\Render.ts" />
+    <TypeScriptCompile Include="game\nodes\SpaceshipCollision.ts" />
+    <TypeScriptCompile Include="game\systems\BulletAgeSystem.ts" />
+    <TypeScriptCompile Include="game\systems\CollisionSystem.ts" />
+    <TypeScriptCompile Include="game\systems\GameManager.ts" />
+    <TypeScriptCompile Include="game\systems\GunControlSystem.ts" />
+    <TypeScriptCompile Include="game\systems\MotionControlSystem.ts" />
+    <TypeScriptCompile Include="game\systems\MovementSystem.ts" />
+    <TypeScriptCompile Include="game\systems\RenderSystem.ts" />
+    <TypeScriptCompile Include="game\systems\SystemPriorities.ts" />
+    <Content Include="Scripts\libs\dat.gui.js" />
+    <Content Include="Scripts\libs\dat.gui.min.js" />
     <Content Include="Scripts\libs\domReady.js" />
-    <Content Include="Scripts\libs\easeljs.d.ts" />
-    <Content Include="Scripts\libs\easeljs.js" />
-    <Content Include="Scripts\libs\jquery\dat.gui.d.ts" />
-    <Content Include="Scripts\libs\jquery\jquery-1.9.1.js" />
-    <Content Include="Scripts\libs\jquery\jquery-int.d.ts" />
-    <Content Include="Scripts\libs\jquery\jquery.d.ts" />
-    <Content Include="Scripts\libs\jquery\jquery.js" />
+    <Content Include="Scripts\libs\easeljs-0.8.2.combined.js" />
+    <Content Include="Scripts\libs\easeljs-0.8.2.min.js" />
+    <Content Include="Scripts\libs\jquery.js" />
+    <Content Include="Scripts\libs\jquery.min.js" />
     <Content Include="Scripts\libs\require.js" />
     <Content Include="Scripts\libs\signals.js" />
     <Content Include="Scripts\libs\signals.min.js" />
-    <Content Include="Scripts\libs\tweenjs-0.4.0.min.js" />
+    <Content Include="Scripts\libs\tweenjs-0.6.2.combined.js" />
+    <Content Include="Scripts\libs\tweenjs-0.6.2.min.js" />
+    <Content Include="Scripts\libs\underscore-min.js" />
     <Content Include="Scripts\libs\underscore.js" />
-    <Content Include="Scripts\typings\dat.gui.d.ts" />
     <Content Include="Scripts\typings\easeljs\easeljs.d.ts" />
-    <Content Include="Scripts\typings\jquery-int.d.ts" />
-    <Content Include="Scripts\typings\jquery.d.ts" />
-    <Content Include="Scripts\typings\lib.d.ts" />
-    <Content Include="Scripts\typings\node.d.ts" />
-    <Content Include="Scripts\typings\require.d.ts" />
-    <Content Include="Scripts\typings\signal.d.ts" />
     <Content Include="Scripts\typings\tweenjs\tweenjs.d.ts" />
-    <Content Include="Scripts\typings\underscore-int.d.ts" />
-    <Content Include="Scripts\typings\underscore.d.ts" />
-    <Content Include="Scripts\typings\webgl.d.ts" />
-    <Content Include="Scripts\typings\xlib.d.ts" />
+    <TypeScriptCompile Include="core\Components.ts" />
+    <TypeScriptCompile Include="core\IView.ts" />
+    <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\dat-gui\dat-gui.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\domready\domready.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\js-signals\js-signals.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\modules.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\requirejs-domready\domready.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\tsd.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="tools\Point.ts" />
     <TypeScriptCompile Include="tools\KeyPoll.ts" />
     <Content Include="tools\KeyPoll.js">
@@ -372,14 +364,14 @@
     <Content Include="tools\Signal.min.js">
       <DependentUpon>Signal.ts</DependentUpon>
     </Content>
-    <Content Include="tools\Signal.ts" />
+    <TypeScriptCompile Include="tools\Signal.ts" />
     <Content Include="tools\SignalBinding.js">
       <DependentUpon>SignalBinding.ts</DependentUpon>
     </Content>
     <Content Include="tools\SignalBinding.min.js">
       <DependentUpon>SignalBinding.ts</DependentUpon>
     </Content>
-    <Content Include="tools\SignalBinding.ts" />
+    <TypeScriptCompile Include="tools\SignalBinding.ts" />
     <Content Include="tools\Tickprovider.js">
       <DependentUpon>Tickprovider.ts</DependentUpon>
     </Content>
@@ -456,11 +448,6 @@
   <ItemGroup>
     <Content Include="tools\Signal.js.map">
       <DependentUpon>Signal.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App.js.map">
-      <DependentUpon>App.ts</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -570,6 +557,8 @@
     <Content Include="game\Asteroids.js.map">
       <DependentUpon>Asteroids.ts</DependentUpon>
     </Content>
+    <Content Include="Scripts\libs\underscore-min.map" />
+    <Content Include="Scripts\libs\jquery.min.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -604,17 +593,61 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptTarget>ES5 --module AMD</TypeScriptTarget>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
-    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptSourceMap>
+    </TypeScriptSourceMap>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <TypeScriptTarget>ES5 --module AMD</TypeScriptTarget>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
-    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptSourceMap>
+    </TypeScriptSourceMap>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <Target Name="BeforeBuild">
+    <Message Text="Compiling TypeScript files" />
+    <Message Text="Executing tsc @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+    <Exec Command="tsc --module AMD @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+  </Target>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" />
 </Project>

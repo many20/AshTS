@@ -1,0 +1,5 @@
+{
+  "directory": "./bowerlib",
+  "analytics": false,
+  "timeout": 120000
+}
